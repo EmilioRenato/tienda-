@@ -17,11 +17,7 @@ Principal::Principal(QWidget *parent)
     for (int i = 0; i < m_productos.size(); ++i) {
         ui->inProducto->addItem(m_productos.at(i)->nombre());
     }
-    // Colocar cabecera de la tabla
-    QStringList cabecera = {"Cantidad", "Producto", "Subtotal"};
-    ui->outDetalle->setColumnCount(3);
-    ui->outDetalle->setHorizontalHeaderLabels(cabecera);
-    // Inicializar subtotal global
+
     m_subtotal = 0;
     m_total=0;
     m_iva=0;
@@ -107,7 +103,7 @@ bool Principal::validarCedula()
 
 void Principal::on_cmdAgregar_released()
 {
-    QString str="";
+    QString str="",srt2="";
     // Validar que no se agregen productos con 0 cantidad
     int cantidad = ui->inCantidad->value();
     if (cantidad == 0){
@@ -116,22 +112,15 @@ void Principal::on_cmdAgregar_released()
     // Obtener datos de la GUI
     int index = ui->inProducto->currentIndex();
     Producto *p = m_productos.at(index);
-
-
     // Calcular el subtotal del producto
     float subtotal = cantidad * p->precio();
 
     // Agregar datos a la tabla
-    int fila = ui->outDetalle->rowCount();
-    ui->outDetalle->insertRow(fila);
-    ui->outDetalle->setItem(fila,0,new QTableWidgetItem(QString::number(cantidad)));
-
-    ui->outDetalle->setItem(fila,1,new QTableWidgetItem(p->nombre()));
-
-    ui->outDetalle->setItem(fila,2,new QTableWidgetItem(QString::number(subtotal,'f',2)));
 
 
-    str=str+ QString::number(cantidad)+" "+p->nombre()+" "+QString::number(subtotal,'f',2)+" ";
+    ui->outDetalle->appendPlainText("     "+QString::number(cantidad)+"      "+p->nombre()+"      "+QString::number(subtotal,'f',2));
+
+str=ui->outDetalle->toPlainText();
     // Limpiar datos
     setDetalles(str);
     ui->inCantidad->setValue(0);
@@ -192,9 +181,9 @@ QString Principal::datos2String()
     QDateTime time = QDateTime::currentDateTime();
     time.toString();
 
-    QString str = "Nombre: "+m_nombre+ "\n" +"Cedula: "+m_cedula+"\n"+"Detalles de compra: "+m_detalles+"\n"+
+    QString str = "Fecha: "+ time.toString()+"\n"+"Nombre: "+m_nombre+ "\n" +"Cedula: "+m_cedula+"\n"+"Detalles de compra: "+"\n"+m_detalles+"\n"+
             "Telefono: "+m_telefono +"\n"+ "Direccion: "+m_direccion+"\n"+"Correo: "
-                  + m_correo+"\n"+"Subtotal: "+s+"\n"+"Iva: "+i+"\n"+"Total: "+t +"\n"+"Fecha: "+ time.toString();
+                  + m_correo+"\n"+"Subtotal: "+s+"\n"+"Iva: "+i+"\n"+"Total: "+t ;
     return str;
 }
 
@@ -212,9 +201,9 @@ QString Principal::datos2StringConsFin()
     m_cedula="9999999999999";
     m_direccion="999999999999";
 
-    QString str = "Nombre: "+m_nombre+ "\n" +"Cedula: "+m_cedula+"\n"+"Detalles de compra: "+m_detalles+"\n"+
+    QString str = "Fecha: "+ time.toString()+"\n"+"Nombre: "+m_nombre+ "\n" +"Cedula: "+m_cedula+"\n"+"Detalles de compra: "+"\n"+m_detalles+"\n"+
             "Telefono: "+m_telefono +"\n"+ "Direccion: "+m_direccion+"\n"+"Correo: "
-                  + m_correo+"\n"+"Subtotal: "+s+"\n"+"Iva: "+i+"\n"+"Total: "+t +"\n"+"Fecha: "+ time.toString();
+                  + m_correo+"\n"+"Subtotal: "+s+"\n"+"Iva: "+i+"\n"+"Total: "+t ;
     return str;
 }
 

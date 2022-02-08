@@ -13,6 +13,7 @@
 #include <conio.h>
 #include <string.h>
 #include <QTime>
+#include <QTableWidget>
 using namespace std;
 
 #define IVA 12

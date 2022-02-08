@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QDebug>
 #include "principal.h"
+#include <QTime>
 
 namespace Ui {
 class facturacion;
@@ -31,6 +32,7 @@ private:
     QString m_version;
     int m_valor;
 
+    QString fecha();
 
     QString m_nombre2;
     QString m_cedula2;

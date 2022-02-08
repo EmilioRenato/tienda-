@@ -227,12 +227,9 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QTableWidget" name="outDetalle">
-            <property name="minimumSize">
-             <size>
-              <width>400</width>
-              <height>0</height>
-             </size>
+           <widget class="QPlainTextEdit" name="outDetalle">
+            <property name="readOnly">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -315,7 +312,6 @@
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -335,7 +331,6 @@
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -372,7 +367,7 @@ color: rgb(224, 27, 36);</string>
      <x>0</x>
      <y>0</y>
      <width>766</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

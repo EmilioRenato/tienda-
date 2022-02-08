@@ -23,7 +23,9 @@ FORMS += \
     facturacion.ui \
     principal.ui
 
-TRANSLATIONS =
+TRANSLATIONS = tienda_en.ts\
+tienda_fr.ts\
+tienda_jp.ts
 
 
 # Default rules for deployment.
@@ -32,7 +34,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    recursos/tienda.png
+    recursos/tienda.png \
+    tienda_en.qm
 
 RESOURCES += \
     recursos.qrc
